@@ -11,6 +11,8 @@ Required Features:
 - [ ] Devise a method for the computer to determine if code was broken with minimal human guidance.
 '''
 
+# from corpus_loader import word_list
+import re
 
 def encrypt(text_to_encrypt, shift):
   '''
@@ -65,12 +67,40 @@ def crack(text_to_decrypt):
   Input: Takes in a string of text to decrypt.
   Output: Decrypted message as a string.
   '''
-  pass
+
+  # run through all possible shifts, including the current one
+  possible_plain_messages = []
+  for i in range(6):
+    possible_plain_messages.append(decrypt(text_to_decrypt, i))
+
+    # count the total "words" in this plain_message
+    candidate_words = possible_plain_messages[i].split()
+    total_words = len(candidate_words)
+    total_real_words = 0
+
+    for candidate in candidate_words:
+      potential_word = re.sub(r'[^A-Za-z]+', '', candidate)
+
+      # determine if each word is an english word
+      # if potential_word is in corpus:
+      #  total_real_words += 1
+
+    # calculate the english-word-percentage of each plain_message
+    score = total_real_words / total_words
+
+    # figure out the best data structure to store these 26 (phrases, scores) in
+
+    print("************************************************")
+    print(f"*** possible plain message with a shift of {i} ***")
+    print(possible_plain_messages[i])
+    print("total_words: ", total_words)
+    print("total_real_words: ", total_real_words)
+    print("score: ", score)
+    print("************************************************")
+
+  # find max score and return the associated phrase
+
+
 
 if __name__ == '__main__':
-  print("all lowercase")
-  encrypt("abcdefghijklmnopqrstuvwxyz",4)
-  print("and then for A and Z")
-  encrypt("AZ",4)
-  print("!!!! turns into")
-  print(encrypt("!!!!",4))
+  crack(encrypt("hello there! *captain* planet!",4))

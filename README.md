@@ -19,7 +19,8 @@ TBD
 **1.0.0** 12-TBD-2020 - Initial release
 
 ## Credits and Collaborations
-- [unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
+- [unicode values](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
 - Taylor's suggestion of ord()
 - [ord()](https://www.geeksforgeeks.org/ord-function-python/)
 - [chr()](https://stackoverflow.com/questions/29818519/what-is-the-opposite-of-pythons-ord-function#:~:text=For%20example%2C%20chr(97),i%20is%20outside%20that%20range.)
+- [Print lists in Python (4 Different Ways)](https://www.geeksforgeeks.org/print-lists-in-python-4-different-ways/)
