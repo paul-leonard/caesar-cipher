@@ -1,9 +1,9 @@
 '''
 Required Testing Features:
-- [ ] encrypt a string with a given shift
-- [ ] decrypt a previously encrypted string with the same shift
-- [ ] encryption should handle upper and lower case letters
-- [ ] encryption should allow non-alpha characters but ignore them, including white space
+- [x] encrypt a string with a given shift
+- [x] decrypt a previously encrypted string with the same shift
+- [x] encryption should handle upper and lower case letters
+- [x] encryption should allow non-alpha characters but ignore them, including white space
 - [ ] decrypt encrypted version of It was the best of times, it was the worst of times. WITHOUT knowing the shift used.
 - [ ] refer to supplied unit tests.
 '''
@@ -17,17 +17,26 @@ from caesar_cipher.cipher import encrypt, decrypt, crack
 def test_version():
     assert __version__ == '0.1.0'
 
-@pytest.mark.skip("pending")
+
+# additional tests
 def test_decrypt_shift_20():
-    actual = decrypt(encrypt("apple", 20))
+    actual = decrypt(encrypt("apple", 20),20)
     expected = "apple"
     assert actual == expected
 
-@pytest.mark.skip("pending")
+
 def test_encrypt_very_large_shift():
-    actual = encrypt("apple", 60)
-    expected = "apple"
+    actual = encrypt("apple", 101)
+    expected = "xmmib"
     assert actual == expected
+
+
+def test_encrypt_negative_wrapping():
+    actual = encrypt("apple", -3)
+    expected = "xmmib"
+    assert actual == expected
+
+
 
 # supplied tests
 def test_encrypt_shift_1():

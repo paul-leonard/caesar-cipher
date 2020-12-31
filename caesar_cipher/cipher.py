@@ -1,11 +1,11 @@
 '''
 Required Features: 
-- [ ] Create an encrypt function that takes in a plain text phrase and a numeric shift.
-- [ ] the phrase will then be shifted that many letters.
-- [ ] shifts that exceed 26 should wrap around
-- [ ] shifts that push a letter out or range should wrap around
+- [x] Create an encrypt function that takes in a plain text phrase and a numeric shift.
+- [x] the phrase will then be shifted that many letters.
+- [x] shifts that exceed 26 should wrap around
+- [x] shifts that push a letter out or range should wrap around
 
-- [ ] Create a decrypt function that takes in encrypted text and numeric shift which will restore the encrypted text back to its original form when correct key is supplied.
+- [x] Create a decrypt function that takes in encrypted text and numeric shift which will restore the encrypted text back to its original form when correct key is supplied.
 
 - [ ] Create a crack function that will decode the cipher so that an encrypted message can be transformed into its original state WITHOUT access to the key.
 - [ ] Devise a method for the computer to determine if code was broken with minimal human guidance.
@@ -25,20 +25,23 @@ def encrypt(text_to_encrypt, shift):
     plain_number = ord(char)
     shifted_number = (plain_number + shift)
 
-    # decimal representation for: a-z is 97-122 inclusive on both ends
+    # get lowercase characters back within the appropriate range 
+    # decimal representation for a-z is 97-122 inclusive on both ends
     if plain_number >=97 and plain_number <= 122:
       while shifted_number > 122:
         shifted_number -= 26
       while shifted_number < 97:
         shifted_number += 26
 
-    # decimal representation for: A-Z is 65-90 inclusive on both ends
+    # get uppercase characters back within the appropriate range 
+    # decimal representation for A-Z is 65-90 inclusive on both ends
     elif plain_number >=65 and plain_number <= 90:
       while shifted_number > 90:
         shifted_number -= 26
       while shifted_number < 65:
         shifted_number += 26
 
+    # shift a-z and A-Z, leave everything else alone and pass it through
     if (plain_number >=97 and plain_number <= 122) or (plain_number >=65 and plain_number <= 90):
       encrypted_letter = chr(shifted_number)
     else:
