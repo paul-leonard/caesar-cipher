@@ -11,12 +11,33 @@ Required Features:
 - [ ] Devise a method for the computer to determine if code was broken with minimal human guidance.
 '''
 
+def char_to_number(char):
+  return ord(char)
+
+def number_to_char(number):
+  return chr(number)
+
+
 def encrypt(text_to_encrypt, shift):
   '''
   Input: Takes in a string of text to encrypt and an integer for the number of positions to shift during encryption.
   Output: Encrypted message as a string.
   '''
-  pass
+  
+  encrypted_message = ""
+  
+  for char in text_to_encrypt:
+    #could use regex to find if it is a character.  If it is not, skip and leave unchanged.
+    #if char in a-z or A-Z
+
+    plain_number = char_to_number(char)
+    shifted_number = plain_number + shift
+    encrypted_letter = number_to_char(shifted_number)
+
+    encrypted_message += encrypted_letter
+
+  return encrypted_message
+
 
 def decrypt(text_to_decrypt, shift):
   '''

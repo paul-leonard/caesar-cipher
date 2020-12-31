@@ -17,18 +17,14 @@ from caesar_cipher.cipher import encrypt, decrypt, crack
 def test_version():
     assert __version__ == '0.1.0'
 
+
 # supplied tests
-
-
-@pytest.mark.skip("pending")
 def test_encrypt_shift_1():
     actual = encrypt("apple", 1)
     expected = "bqqmf"
     assert actual == expected
 
 
-
-@pytest.mark.skip("pending")
 def test_encrypt_shift_10():
     actual = encrypt("apple", 10)
     expected = "kzzvo"
