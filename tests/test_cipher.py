@@ -17,6 +17,17 @@ from caesar_cipher.cipher import encrypt, decrypt, crack
 def test_version():
     assert __version__ == '0.1.0'
 
+@pytest.mark.skip("pending")
+def test_decrypt_shift_20():
+    actual = decrypt(encrypt("apple", 20))
+    expected = "apple"
+    assert actual == expected
+
+@pytest.mark.skip("pending")
+def test_encrypt_very_large_shift():
+    actual = encrypt("apple", 60)
+    expected = "apple"
+    assert actual == expected
 
 # supplied tests
 def test_encrypt_shift_1():
@@ -31,7 +42,6 @@ def test_encrypt_shift_10():
     assert actual == expected
 
 
-@pytest.mark.skip("pending")
 def test_encrypt_shift_20():
     actual = encrypt("apple", 20)
     expected = "ujjfy"

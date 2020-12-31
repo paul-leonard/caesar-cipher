@@ -11,12 +11,6 @@ Required Features:
 - [ ] Devise a method for the computer to determine if code was broken with minimal human guidance.
 '''
 
-def char_to_number(char):
-  return ord(char)
-
-def number_to_char(number):
-  return chr(number)
-
 
 def encrypt(text_to_encrypt, shift):
   '''
@@ -28,18 +22,25 @@ def encrypt(text_to_encrypt, shift):
   
   for char in text_to_encrypt:
 
-    plain_number = char_to_number(char)
+    plain_number = ord(char)
+    shifted_number = (plain_number + shift)
 
-    # decimal representation for:
-    # a-z is 97-122 inclusive on both ends
-    # A-Z is 65-90 inclusive on both ends
+    # decimal representation for: a-z is 97-122 inclusive on both ends
+    if plain_number >=97 and plain_number <= 122:
+      while shifted_number > 122:
+        shifted_number -= 26
+      while shifted_number < 97:
+        shifted_number += 26
+
+    # decimal representation for: A-Z is 65-90 inclusive on both ends
+    elif plain_number >=65 and plain_number <= 90:
+      while shifted_number > 90:
+        shifted_number -= 26
+      while shifted_number < 65:
+        shifted_number += 26
+
     if (plain_number >=97 and plain_number <= 122) or (plain_number >=65 and plain_number <= 90):
-
-      shifted_number = (plain_number + shift)
-      print("plain number",plain_number)
-      # if shifted_number > 26:
-      #   shifted_number -= 26
-      encrypted_letter = number_to_char(shifted_number)
+      encrypted_letter = chr(shifted_number)
     else:
       encrypted_letter = char
 
