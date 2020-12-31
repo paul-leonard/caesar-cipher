@@ -27,12 +27,21 @@ def encrypt(text_to_encrypt, shift):
   encrypted_message = ""
   
   for char in text_to_encrypt:
-    #could use regex to find if it is a character.  If it is not, skip and leave unchanged.
-    #if char in a-z or A-Z
 
     plain_number = char_to_number(char)
-    shifted_number = plain_number + shift
-    encrypted_letter = number_to_char(shifted_number)
+
+    # decimal representation for:
+    # a-z is 97-122 inclusive on both ends
+    # A-Z is 65-90 inclusive on both ends
+    if (plain_number >=97 and plain_number <= 122) or (plain_number >=65 and plain_number <= 90):
+
+      shifted_number = (plain_number + shift)
+      print("plain number",plain_number)
+      # if shifted_number > 26:
+      #   shifted_number -= 26
+      encrypted_letter = number_to_char(shifted_number)
+    else:
+      encrypted_letter = char
 
     encrypted_message += encrypted_letter
 
@@ -44,7 +53,7 @@ def decrypt(text_to_decrypt, shift):
   Input: Takes in a string of text to decrypt and an integer for the number of positions to shift during decryption.
   Output: Decrypted message as a string.
   '''
-  pass
+  return encrypt(text_to_decrypt, -shift)
 
 
 def crack(text_to_decrypt):
@@ -53,3 +62,11 @@ def crack(text_to_decrypt):
   Output: Decrypted message as a string.
   '''
   pass
+
+if __name__ == '__main__':
+  print("all lowercase")
+  encrypt("abcdefghijklmnopqrstuvwxyz",4)
+  print("and then for A and Z")
+  encrypt("AZ",4)
+  print("!!!! turns into")
+  print(encrypt("!!!!",4))
