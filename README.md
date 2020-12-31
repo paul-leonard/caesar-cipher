@@ -24,3 +24,4 @@ TBD
 - [ord()](https://www.geeksforgeeks.org/ord-function-python/)
 - [chr()](https://stackoverflow.com/questions/29818519/what-is-the-opposite-of-pythons-ord-function#:~:text=For%20example%2C%20chr(97),i%20is%20outside%20that%20range.)
 - [Print lists in Python (4 Different Ways)](https://www.geeksforgeeks.org/print-lists-in-python-4-different-ways/)
+- [f string](https://realpython.com/python-f-strings/#f-strings-a-new-and-improved-way-to-format-strings-in-python)
