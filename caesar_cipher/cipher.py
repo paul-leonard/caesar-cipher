@@ -72,7 +72,7 @@ def crack(text_to_decrypt):
   # run through all possible shifts, including the current one
   possible_plain_message = "nothing was input to decode"
   best_score = 0
-  best_message = "no best message found"
+  best_message = ""
 
   for shift_int in range(26):
     possible_plain_message = decrypt(text_to_decrypt, shift_int)
@@ -101,7 +101,7 @@ def crack(text_to_decrypt):
     # or just figure out the max and the phrase and update it each time we loop through
     # only have to really store one... which is the best one... saves on memory space too
 
-    if score > best_score:
+    if score > best_score and score > 0.6:
       best_score = score
       best_message = possible_plain_message
 
@@ -124,4 +124,4 @@ def crack(text_to_decrypt):
 
 
 if __name__ == '__main__':
-  crack(encrypt("It was the best of times, it was the worst of times. -Wayne Gretzky",4))
+  crack(encrypt("Ix fhw txe fofg of ndhrl, it nad tho hndrk of allkd.",10))
