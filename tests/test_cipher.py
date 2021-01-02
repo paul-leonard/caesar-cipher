@@ -84,7 +84,6 @@ def test_round_trip():
     assert actual == expected
 
 
-@pytest.mark.skip("pending")
 def test_crack_phrase():
     phrase = "It was the best of times, it was the worst of times."
     encrypted = encrypt(phrase, 10)

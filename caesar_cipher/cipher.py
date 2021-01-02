@@ -12,6 +12,7 @@ Required Features:
 '''
 
 from caesar_cipher.corpus_loader import corpus_word_list
+from caesar_cipher.corpus_loader import corpus_name_list
 import re
 
 def encrypt(text_to_encrypt, shift):
@@ -73,7 +74,7 @@ def crack(text_to_decrypt):
   best_score = 0
   best_message = "no best message found"
 
-  for shift_int in range(6):
+  for shift_int in range(26):
     possible_plain_message = decrypt(text_to_decrypt, shift_int)
 
     # count the total "words" in this plain_message
@@ -89,8 +90,8 @@ def crack(text_to_decrypt):
        total_real_words += 1
 
       # determine if each word is a name
-      # if this_potential_word is in name_corpus:
-      #  total_real_words += 1
+      if this_potential_word in corpus_name_list:
+       total_real_words += 1
 
     # calculate the english-word-percentage of each plain_message
     score = total_real_words / total_words
@@ -122,8 +123,5 @@ def crack(text_to_decrypt):
 
 
 
-
-
-
 if __name__ == '__main__':
-  crack(encrypt("hello there! *captain* planet, Ryan!",4))
+  crack(encrypt("It was the best of times, it was the worst of times. -Wayne Gretzky",4))
