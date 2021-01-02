@@ -69,12 +69,15 @@ def crack(text_to_decrypt):
   '''
 
   # run through all possible shifts, including the current one
-  possible_plain_messages = []
-  for i in range(6):
-    possible_plain_messages.append(decrypt(text_to_decrypt, i))
+  possible_plain_message = "nothing was input to decode"
+  best_score = 0
+  best_message = "no best message found"
+
+  for shift_int in range(6):
+    possible_plain_message = decrypt(text_to_decrypt, shift_int)
 
     # count the total "words" in this plain_message
-    candidate_words = possible_plain_messages[i].split()
+    candidate_words = possible_plain_message.split()
     total_words = len(candidate_words)
     total_real_words = 0
 
@@ -89,16 +92,32 @@ def crack(text_to_decrypt):
     score = total_real_words / total_words
 
     # figure out the best data structure to store these 26 (phrases, scores) in
+    # find max score and return the associated phrase
+    # or just figure out the max and the phrase and update it each time we loop through
+    # only have to really store one... which is the best one... saves on memory space too
 
-    print("************************************************")
-    print(f"*** possible plain message with a shift of {i} ***")
-    print(possible_plain_messages[i])
+    if score > best_score:
+      best_score = score
+      best_message = possible_plain_message
+
+    print("*"*20)
+    print(f"*** possible plain message with a shift of {shift_int} ***")
+    print(possible_plain_message)
     print("total_words: ", total_words)
     print("total_real_words: ", total_real_words)
     print("score: ", score)
-    print("************************************************")
+    print("*"*20)
 
-  # find max score and return the associated phrase
+
+  print("*"*20)
+  print(f"Best score was {best_score} with the message being:")
+  print(best_message)
+  print("*"*20)
+
+  return best_message
+
+
+
 
 
 
