@@ -11,7 +11,7 @@ Required Features:
 - [ ] Devise a method for the computer to determine if code was broken with minimal human guidance.
 '''
 
-# from corpus_loader import word_list
+from caesar_cipher.corpus_loader import corpus_word_list
 import re
 
 def encrypt(text_to_encrypt, shift):
@@ -77,15 +77,19 @@ def crack(text_to_decrypt):
     possible_plain_message = decrypt(text_to_decrypt, shift_int)
 
     # count the total "words" in this plain_message
-    candidate_words = possible_plain_message.split()
-    total_words = len(candidate_words)
+    punctuated_potential_words = possible_plain_message.split()
+    total_words = len(punctuated_potential_words)
     total_real_words = 0
 
-    for candidate in candidate_words:
-      potential_word = re.sub(r'[^A-Za-z]+', '', candidate)
+    for punctuated_potential_word in punctuated_potential_words:
+      this_potential_word = re.sub(r'[^A-Za-z]+', '', punctuated_potential_word)
 
       # determine if each word is an english word
-      # if potential_word is in corpus:
+      if this_potential_word.lower() in corpus_word_list:
+       total_real_words += 1
+
+      # determine if each word is a name
+      # if this_potential_word is in name_corpus:
       #  total_real_words += 1
 
     # calculate the english-word-percentage of each plain_message
@@ -122,4 +126,4 @@ def crack(text_to_decrypt):
 
 
 if __name__ == '__main__':
-  crack(encrypt("hello there! *captain* planet!",4))
+  crack(encrypt("hello there! *captain* planet, Ryan!",4))

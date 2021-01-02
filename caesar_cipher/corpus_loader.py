@@ -6,4 +6,4 @@ nltk.download('words')
 
 from nltk.corpus import words
 
-word_list = words.words()
+corpus_word_list = words.words()
