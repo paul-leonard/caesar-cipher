@@ -4,8 +4,8 @@ Required Testing Features:
 - [x] decrypt a previously encrypted string with the same shift
 - [x] encryption should handle upper and lower case letters
 - [x] encryption should allow non-alpha characters but ignore them, including white space
-- [ ] decrypt encrypted version of It was the best of times, it was the worst of times. WITHOUT knowing the shift used.
-- [ ] refer to supplied unit tests.
+- [x] decrypt encrypted version of It was the best of times, it was the worst of times. WITHOUT knowing the shift used.
+- [x] refer to supplied unit tests.
 '''
 
 import pytest
