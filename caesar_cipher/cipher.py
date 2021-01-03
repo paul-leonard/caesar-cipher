@@ -96,32 +96,8 @@ def crack(text_to_decrypt):
     # calculate the english-word-percentage of each plain_message
     score = total_real_words / total_words
 
-    # figure out the best data structure to store these 26 (phrases, scores) in
-    # find max score and return the associated phrase
-    # or just figure out the max and the phrase and update it each time we loop through
-    # only have to really store one... which is the best one... saves on memory space too
-
     if score > best_score and score > 0.6:
       best_score = score
       best_message = possible_plain_message
 
-    print("*"*20)
-    print(f"*** possible plain message with a shift of {shift_int} ***")
-    print(possible_plain_message)
-    print("total_words: ", total_words)
-    print("total_real_words: ", total_real_words)
-    print("score: ", score)
-    print("*"*20)
-
-
-  print("*"*20)
-  print(f"Best score was {best_score} with the message being:")
-  print(best_message)
-  print("*"*20)
-
   return best_message
-
-
-
-if __name__ == '__main__':
-  crack(encrypt("Ix fhw txe fofg of ndhrl, it nad tho hndrk of allkd.",10))
